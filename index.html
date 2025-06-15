@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¡Feliz Día Papá!</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(-45deg, #0d47a1, #1976d2, #64b5f6, #bbdefb);
+      background-size: 600% 600%;
+      animation: moverFondo 25s ease infinite;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1em;
+      box-sizing: border-box;
+    }
+
+    @keyframes moverFondo {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .mensaje-arriba {
+      font-size: 4em;
+      font-weight: bold;
+      background: linear-gradient(90deg, #ffd700, #ff69b4, #00ffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: bajar 2.5s ease-out forwards;
+      z-index: 3;
+      text-shadow: 2px 2px 4px black;
+      margin-bottom: 1em;
+      white-space: nowrap;
+    }
+
+    @keyframes bajar {
+      0% { transform: translateY(-150px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .mensaje-abajo {
+      color: white;
+      font-size: 2em;
+      font-weight: bold;
+      animation: subir 3s ease-out forwards;
+      z-index: 2;
+    }
+
+    @keyframes subir {
+      0% { transform: translateY(100px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .emojis {
+      font-size: 2.5em;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .confeti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: yellow;
+      animation: caer linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes caer {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .mensaje-arriba {
+        font-size: 2.5em;
+        white-space: normal;
+      }
+
+      .mensaje-abajo {
+        font-size: 1.5em;
+      }
+
+      .emojis {
+        font-size: 2em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mensaje-arriba">
+    ¡FELIZ DÍA PAPÁ!
+  </div>
+
+  <div class="mensaje-abajo">
+    🍷 ¡Brindemos por ti, papá! 🍷<br />
+    <div class="emojis">💙 🛠️ 👨‍👧‍👦 🧢 💪 🎉</div>
+  </div>
+
+  <script>
+    const colores = ["#FFD700", "#FF4500", "#ADFF2F", "#00CED1", "#FF69B4", "#ffffff"];
+    for (let i = 0; i < 100; i++) {
+      const confeti = document.createElement("div");
+      confeti.classList.add("confeti");
+      confeti.style.left = Math.random() * 100 + "vw";
+      confeti.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+      confeti.style.animationDuration = (2 + Math.random() * 3) + "s";
+      confeti.style.width = confeti.style.height = (6 + Math.random() * 8) + "px";
+      document.body.appendChild(confeti);
+    }
+  </script>
+
+</body>
+</html>
